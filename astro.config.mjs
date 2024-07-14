@@ -14,20 +14,17 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "Guides",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            {
-              label: "Example Guide",
-              slug: "guides/example",
-            },
-          ],
+          label: "Apa itu sora?",
+          link: "perkenalan",
         },
         {
-          label: "Reference",
-          autogenerate: {
-            directory: "reference",
-          },
+          label: "Konfigurasi Aplikasi",
+          items: [
+            {
+              label: "Topologi jaringan",
+              link: "/panduan/topologi-jaringan",
+            },
+          ],
         },
       ],
     }),
