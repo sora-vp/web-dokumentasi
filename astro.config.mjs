@@ -3,6 +3,8 @@ import starlight from "@astrojs/starlight";
 
 import tailwind from "@astrojs/tailwind";
 
+import rehypeMermaid from "rehype-mermaid";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -30,4 +32,7 @@ export default defineConfig({
     }),
     tailwind(),
   ],
+  markdown: {
+    rehypePlugins: [[rehypeMermaid, { strategy: "img-svg", dark: true }]],
+  },
 });
