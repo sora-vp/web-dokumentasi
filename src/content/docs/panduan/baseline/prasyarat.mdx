@@ -1,0 +1,39 @@
+---
+title: Prasyarat instalasi web admin
+description: Penjelasan mengenai spesifikasi perangkat.
+---
+
+Sebagai pendahuluan, aplikasi ini terdiri dari beberapa stack yang digunakan, antara lain,
+
+1. Database -> [MySQL](https://www.mysql.com/).
+2. Message Queue -> [RabbitMQ](https://www.rabbitmq.com/).
+3. Web Admin -> Next.js
+4. Klien Presensi Kehadiran -> Vite react menggunakan `react-router-dom`.
+5. Klien Pemilihan -> Vite react menggunakan `react-router-dom`.
+6. Pemroses data pemilihan masuk (Vote Processor) -> Message queue consumer berbasis Node.js.
+
+Secara praktik, semua komponen di atas bisa di atur secara manual satu persatu, namun akan menjadi sebuah kesulitan jika ada suatu masalah. Untuk versi baseline ini, terdapat [konfigurasi docker](https://github.com/sora-vp/baseline-docker) siap pakai yang perlu membutuhkan sedikit pengaturan saja.
+
+Di lain sisi, anda memerlukan perangkat yang bisa menjalankan sistem operasi distribusi linux yang dapat menjalankan docker. Menjalankan docker pada <u>**komputer terpisah**</u> dengan akses web admin atau berjalan di atas sistem operasi distribusi linux **tanpa emulasi** _Windows subsytem for linux_ (WSL), _VirtualBox_, atau _VMware_ adalah hal yang di rekomendasikan untuk dilakukan namun bukan hal yang dilarang selama memenuhi spesifikasi minimal.
+
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Aside>Dengan ini, anda bisa mengatur sebuah komputer yang menggunakan sistem operasi windows maupun linux. Hal ini dikarenakan akan banyak menampilkan banyak _tools_ di luar tutorial ini.</Aside>
+
+<Tabs>
+  <TabItem label="Linux distro native">
+    <Aside type="tip" title="Rekomendasi distro">
+        Anda bisa menggunkan distro apapun selama bisa menjalankan docker dengan mudah, tetapi menggunakan [Alpine Linux](https://alpinelinux.org/) adalah hal yang baik untuk digunakan. 
+
+        Dalam web ini, akan dicontohkan bagaimana cara menggunakan Alpine Linux dan Ubuntu (versi WSL) untuk menjalankan aplikasi ini.
+    </Aside>
+    WIP
+  </TabItem>
+  <TabItem label="Windows Subsystem for Linux">
+    <Aside>Dokumentasi ini akan memberikan contoh bagaimana cara menggunakan WSL dengan sistem operasi Ubuntu.</Aside>
+    WIP
+  </TabItem>
+  <TabItem label="VirtualBox / VMware">
+    WIP
+  </TabItem>
+</Tabs>

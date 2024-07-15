@@ -46,6 +46,6 @@ allowfullscreen></iframe>
 
 ## Rencana jangka panjang
 
-Software ini diniatkan untuk berkembang lebih jauh dan memiliki banyak varian. Saat ini hanya tersedia untuk versi [baseline](https://github.com/sora-vp/baseline) yang sudah memenuhi kebutuhan untuk level organisasi sekolah.
+Software ini diniatkan untuk berkembang lebih jauh dan memiliki banyak varian. Saat ini hanya tersedia untuk versi [baseline](https://github.com/sora-vp/baseline) yang sudah memenuhi kebutuhan untuk level organisasi saja.
 
 Memiliki ide dan ingin berkontribusi? Silahkan buka diskusi di [halaman diskusi](https://github.com/orgs/sora-vp/discussions/new?category=ideas) repositori baseline dan berikan rincian secara padat dan jelas.

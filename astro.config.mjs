@@ -20,11 +20,21 @@ export default defineConfig({
           link: "perkenalan",
         },
         {
-          label: "Konfigurasi Aplikasi",
+          label: "Instalasi dan Konfigurasi",
           items: [
             {
-              label: "Topologi jaringan",
-              link: "/panduan/topologi-jaringan",
+              label: "Varian baseline",
+              items: [
+                {
+                  label: "Setup server / web admin",
+                  items: [
+                    {
+                      label: "Prasyarat instalasi",
+                      link: "/panduan/baseline/prasyarat",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
