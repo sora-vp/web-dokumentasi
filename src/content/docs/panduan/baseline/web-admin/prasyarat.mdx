@@ -1,6 +1,7 @@
 ---
-title: Prasyarat instalasi web admin
+title: Prasyarat instalasi server
 description: Penjelasan mengenai spesifikasi perangkat.
+next: false
 ---
 
 Sebagai pendahuluan, aplikasi ini terdiri dari beberapa stack yang digunakan, antara lain,
@@ -16,22 +17,38 @@ Secara praktik, semua komponen di atas bisa di atur secara manual satu persatu, 
 
 Di lain sisi, anda memerlukan perangkat yang bisa menjalankan sistem operasi distribusi linux yang dapat menjalankan docker. Menjalankan docker pada <u>**komputer terpisah**</u> dengan akses web admin atau berjalan di atas sistem operasi distribusi linux **tanpa emulasi** _Windows subsytem for linux_ (WSL), _VirtualBox_, atau _VMware_ adalah hal yang di rekomendasikan untuk dilakukan namun bukan hal yang dilarang selama memenuhi spesifikasi minimal.
 
-import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+import { Aside, Tabs, TabItem, LinkCard } from "@astrojs/starlight/components";
 
-<Aside>Dengan ini, anda bisa mengatur sebuah komputer yang menggunakan sistem operasi windows maupun linux. Hal ini dikarenakan akan banyak menampilkan banyak _tools_ di luar tutorial ini.</Aside>
+<Aside>
+  Dengan ini, anda bisa mengatur sebuah komputer yang menggunakan sistem operasi
+  windows maupun linux. Hal ini dikarenakan akan banyak menampilkan banyak
+  _tools_ di luar tutorial ini.
+</Aside>
 
 <Tabs>
   <TabItem label="Linux distro native">
     <Aside type="tip" title="Rekomendasi distro">
-        Anda bisa menggunkan distro apapun selama bisa menjalankan docker dengan mudah, tetapi menggunakan [Alpine Linux](https://alpinelinux.org/) adalah hal yang baik untuk digunakan. 
+        Anda bisa menggunkan distro apapun selama bisa menjalankan docker dengan mudah, tetapi menggunakan [Alpine Linux](https://alpinelinux.org/) adalah hal yang baik untuk digunakan.
 
         Dalam web ini, akan dicontohkan bagaimana cara menggunakan Alpine Linux dan Ubuntu (versi WSL) untuk menjalankan aplikasi ini.
     </Aside>
+
     WIP
+
+    <LinkCard
+      title="Konfigurasi untuk Alpine Linux tanpa virtualisasi"
+      href="/panduan/baseline/web-admin/alpine-linux-native"
+    />
   </TabItem>
   <TabItem label="Windows Subsystem for Linux">
     <Aside>Dokumentasi ini akan memberikan contoh bagaimana cara menggunakan WSL dengan sistem operasi Ubuntu.</Aside>
+
     WIP
+
+    <LinkCard
+      title="Konfigurasi pada Windows Subsystem for Linux varian Ubuntu"
+      href="/panduan/baseline/web-admin/wsl"
+    />
   </TabItem>
   <TabItem label="VirtualBox / VMware">
     WIP
