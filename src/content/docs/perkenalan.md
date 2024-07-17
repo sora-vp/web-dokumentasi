@@ -49,7 +49,7 @@ Setelah pengembangan iteratif, sampailah pada penggunaan sora yang bisa membantu
       <a class="text-xs text-inherit" target="_blank" href="https://www.instagram.com/stories/highlights/17899451963891635/">Link IG Story</a>
    </div>
 
-   <div class="flex flex-col justify-center items-center">
+   <div class="flex flex-col justify-center items-center gap-2">
 <img src="/assets/perkenalan/hasil-di-hari-sama.png" alt="Gambar statistik pemilihan, hasil akhir di hari yang sama" />
 <a class="text-xs text-inherit text-center" target="_blank" href="https://www.instagram.com/p/CyscHhbyRLP/?img_index=2">Link Post IG</a>
    </div>
