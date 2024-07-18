@@ -57,6 +57,8 @@ Setelah pengembangan iteratif, sampailah pada penggunaan sora yang bisa membantu
 
 ## Bagaimana cara kerjanya?
 
+Terdapat 13 komputer yang sudah di atur untuk menjalankan sora. Satu komputer sebagai server, 10 sebagai komputer pemilih, dan 2 sebagai komputer absen.
+
 Cara kerja aplikasi ini adalah panitia menambahkan data partisipan dan kandidat. Aplikasi admin akan menghasilkan menghasilkan sebuah QR identifier untuk seluruh peserta yang terdaftar. Panitia mengunduh file excel dan menyebarkannya ke seluruh peserta pendaftar. Peserta mengunduh gambar QR pada [web penghasil gambar QR](https://github.com/sora-vp/qrcode-web) masing-masing acara sesuai nama mereka.
 
 Pada hari pemilihan, peserta mengantri untuk melakukan presensi kehadiran dengan menunjukan gambar QR sebagai pengganti tanda tangan kertas. Berikut ini cuplikannya.

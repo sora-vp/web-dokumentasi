@@ -1,0 +1,151 @@
+---
+title: Konfigurasi penggunaan docker
+description: Penjelasan mendetail cara konfigurasi sora yang berjalan menggunakan docker.
+---
+
+import { Aside, Tabs, TabItem } from "@astrojs/starlight/components";
+
+Pada halaman ini akan dijelaskan bagaimana cara melakukan instalasi git, docker, dan sora baseline itu sendiri. Terdapat dua sistem operasi yang akan dijelaskan pada dokumentasi ini yaitu Alpine Linux dan Ubuntu. 
+
+<Aside>
+Silahkan merujuk pada beberapa tutorial resmi yang ada.
+- https://wiki.alpinelinux.org/wiki/Docker#Installation
+- https://docs.docker.com/engine/install/ubuntu/
+</Aside>
+
+## Instalasi docker dan git
+
+<Tabs syncKey="os">
+  <TabItem label="Alpine">
+  Tahap nol, anda harus masuk ke **root** yang biasanya sudah root secara default. Jika belum, lakukan perintah ini.
+
+  ```sh
+  doas su
+  ```
+
+  Pertama, kita harus mengaktifkan repositori _community_ yang Alpine miliki. Buka file `/etc/apk/repositories` terlebih dahulu.
+
+  ```sh
+  vi /etc/apk/repositories
+  ```
+
+  <Aside type="tip">
+    Jika anda tidak mengerti cara menggunakan vim, gunakan saja nano.
+    
+    ```sh
+    apk update
+    apk add nano
+    nano /etc/apk/repositories
+    ```
+  </Aside>
+  
+  Hilangkan comment (tanda `#`) pada repositori tersebut.
+
+  ```diff
+  - #http://dl-cdn.alpinelinux.org/alpine/latest-stable/community
+  + http://dl-cdn.alpinelinux.org/alpine/latest-stable/community
+  ```
+
+  > Link mungkin akan terlihat berbeda sesuai pilihan _mirror_ repositori yang dipilih pada saat proses instalasi, lihat akhirannya saja.
+
+  Kemudian kita install docker dan git.
+
+  ```sh
+  apk add --update docker docker-compose git
+  ```
+
+  Jika sudah, tambahkan docker menjadi proses yang otomatis berjalan setelah komputer menyala.
+
+  ```sh
+  rc-update add docker default
+  ```
+
+  Jangan lupa untuk memulai servicenya.
+
+  ```sh
+  /etc/init.d/docker start
+  ```
+
+  </TabItem>
+  
+  <TabItem label="Ubuntu">
+  WIP
+  </TabItem>
+</Tabs>
+
+## Mengunduh konfigurasi siap pakai dan menjalankannya
+
+Supaya memudahkan konfigurasi, sudah ada preset konfigurasi yang sudah siap digunakan. Lakukan proses _cloning_ repositori https://github.com/sora-vp/baseline-docker dan pindah ke direktori tujuannya.
+
+```sh
+git clone https://github.com/sora-vp/baseline-docker.git sora-baseline-docker
+cd sora-baseline-docker
+```
+
+> Nama output folder menjadi `sora-baseline-docker` supaya tidak membingungkan
+
+Salin file `.env.example` menjadi `.env`.
+
+```sh
+cp .env.example .env
+```
+
+Ubah isi environment variable sesuai kebutuhan menggunakan `vi` atau `nano`.
+
+```sh
+vi .env
+# atau
+nano .env
+```
+
+Berikut ini penjelasan .
+
+- `DATABASE_NAME` : Nama database yang akan dipakai oleh MySQL.
+- `DATABASE_USER` : Nama user yang akan dipakai oleh MySQL.
+- `DATABASE_PASSWORD` : Kata sandi yang akan dipakai oleh `DATABASE_USER` dalam mengakses MySQL.
+- `DATABASE_ROOT_PASSWORD` : Kata sandi user **root** yang digunakan untuk melakukan backup.
+- `AUTH_SECRET` : Token random untuk mengencrypt token jwt dan verifikasi hash email.
+
+Disadur dari [dokumentasi authjs](https://authjs.dev/guides/environment-variables#auth-secret), untuk membuat secret yang aman dan random, gunakan tool `openssl`.
+
+```sh
+openssl rand -base64 33
+```
+
+<Aside type="danger" title="Perhatian">Buat kata sandi untuk user biasa dan root berbeda dan susah ditebak oleh psikologi manusia. `AUTH_SECRET` **wajib** dibuat oleh output random dari perintah `openssl` diatas.</Aside>
+
+Jika sudah semua terisi, save file tersebut kemudian jalankan docker compose.
+
+```sh
+docker compose up -d
+```
+
+<Aside type="danger" title="Perhatian">Pastikan tidak ada proses yang berjalan selain _instance_ sora.</Aside>
+
+
+Jika belum ada image yang di pull maka docker akan otomatis mengambil image sesuai versi yang tertera pada tag yang dipanggil. Jika sudah di start oleh docker compose, cek kembali apakah sudah ada container yang berjalan atau belum dengan perintah
+
+```sh
+docker ps
+```
+
+Output perintahnya akan terlihat seperti ini.
+
+WIP - Screenshot output docker ps
+
+## Web interface
+
+Sora dirancang untuk semua semua web interface dimulai dari web admin, web pemilihan, dan web presensi kehadiran berjalan pada 127.0.0.1 (localhost) server untuk memanfaatkan fitur SSH Tunnel yang mengencrypt data. Selain itu juga, web presensi kehadiran dan pemilihan memerlukan [akses kamera yang harus berjalan diatas HTTPS](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts), supaya lebih singkat dan tetap aman, tunneling adalah solusi yang cukup masuk akal.
+
+Berikut ini list port default ketiga web interface berjalan, nomor port default **wajib** diubah ke port lain.
+- Web Admin -> 3000
+- Web Presensi Kehadiran -> 8080
+- Web Pemilihan -> 8081
+
+WIP - Tutorial ubah port
+
+Jika sudah terlihat tampilan seperti ini atau bisa lakukan `curl http://localhost:<port berjalannya web admin>` maka sudah berhasil dijalankan.
+
+WIP - Screenshot gambar web admin
+
+Anda bisa lanjut ke tahap selanjutnya jika semua proses berjalan lancar.

@@ -1,7 +1,6 @@
 ---
 title: Prasyarat instalasi server
 description: Penjelasan mengenai spesifikasi perangkat.
-next: false
 ---
 
 Sebagai pendahuluan, aplikasi ini terdiri dari beberapa stack yang digunakan, antara lain,
@@ -17,7 +16,11 @@ Secara praktik, semua komponen di atas bisa di atur secara manual satu persatu, 
 
 Di lain sisi, anda memerlukan perangkat yang bisa menjalankan sistem operasi distribusi linux yang dapat menjalankan docker. Menjalankan docker pada <u>**komputer terpisah**</u> dengan akses web admin atau berjalan di atas sistem operasi distribusi linux **tanpa emulasi** _Windows subsytem for linux_ (WSL), _VirtualBox_, atau _VMware_ adalah hal yang di rekomendasikan untuk dilakukan namun bukan hal yang dilarang selama memenuhi spesifikasi minimal.
 
-import { Aside, Tabs, TabItem, LinkCard } from "@astrojs/starlight/components";
+import { Aside, Tabs, TabItem } from "@astrojs/starlight/components";
+
+## Spesifikasi yang diperlukan
+
+Anda memerlukan satu komputer yang akan dijadikan server, namun ada spesifikasi supaya sora bisa berjalan dengan normal, berikut ini penjelasannya.
 
 <Aside>
   Dengan ini, anda bisa mengatur sebuah komputer yang menggunakan sistem operasi
@@ -28,29 +31,42 @@ import { Aside, Tabs, TabItem, LinkCard } from "@astrojs/starlight/components";
 <Tabs>
   <TabItem label="Linux distro native">
     <Aside type="tip" title="Rekomendasi distro">
-        Anda bisa menggunkan distro apapun selama bisa menjalankan docker dengan mudah, tetapi menggunakan [Alpine Linux](https://alpinelinux.org/) adalah hal yang baik untuk digunakan.
-
-        Dalam web ini, akan dicontohkan bagaimana cara menggunakan Alpine Linux dan Ubuntu (versi WSL) untuk menjalankan aplikasi ini.
+      Dokumentasi ini akan menjelaskan penggunaan [Alpine Linux](https://alpinelinux.org/), distro yang di rekomendasikan untuk digunakan karena penggunaan memori yang lebih sedikit. Berikut ini detail spesifikasinya.
     </Aside>
 
-    WIP
+    Terdapat dua opsi model berjalannya server yaitu yang menggunakan GUI (menjalankan browser, docker, terminal, dan apps gui lainnya dengan X11 atau Wayland) atau tanpa GUI (standalone, hanya ada tty).
 
-    <LinkCard
-      title="Konfigurasi untuk Alpine Linux tanpa virtualisasi"
-      href="/panduan/baseline/web-admin/alpine-linux-native"
-    />
+| Opsi Spesifikasi                       | Besaran RAM | Besaran Penyimpanan |
+|----------------------------------------|-------------|---------------------|
+| Minimum standalone                     | 2GB         | 32GB                |
+| Minimum dengan GUI                     | 4GB         | 64GB                |
+| Yang direkomendasikan untuk kedua opsi | 8GB         | 128GB               |
+
+_Catatan_:
+1. Perlu penyimpanan yang lumayan besar karena di belakang layar akan melakukan backup database.
+2. Penggunaan minimum dengan GUI bisa berjalan dengan normal apabila tidak membuka apps terlalu banyak.
   </TabItem>
-  <TabItem label="Windows Subsystem for Linux">
-    <Aside>Dokumentasi ini akan memberikan contoh bagaimana cara menggunakan WSL dengan sistem operasi Ubuntu.</Aside>
+  <TabItem label="Windows Subsystem for Linux / VirtualBox">
+    <Aside>Dokumentasi ini juga menjelaskan bagaimana cara menjalankan sora baseline dengan sistem operasi [Ubuntu](https://ubuntu.com/desktop/wsl).</Aside>
 
-    WIP
+    Jika anda ingin menggunakan perangkat yang ada tanpa menghilangkan sistem operasi Windows, anda bisa menggunakan WSL atau VirtualBox sebagai gantinya. Berikut ini spesifikasi yang direkomendasikan untuk kedua options.
 
-    <LinkCard
-      title="Konfigurasi pada Windows Subsystem for Linux varian Ubuntu"
-      href="/panduan/baseline/web-admin/wsl"
-    />
-  </TabItem>
-  <TabItem label="VirtualBox / VMware">
-    WIP
+| Opsi Spesifikasi                       | Besaran RAM | Besaran Penyimpanan |
+|----------------------------------------|-------------|---------------------|
+| Spesifikasi minimum                    | 8GB         | 64GB                |
+| Yang direkomendasikan                  | 16GB        | 128GB               |
+
+Karena berjalan melalui proses emulasi, penggunaan ram akan dibagi dengan sistem operasi yang berjalan dengan sistem operasi yang berjalan di bawah windows. Oleh karena itu besaran ram harus lebih besar dengan skema 4GB di alokasikan untuk windows, sisanya untuk emulasi.
+
+<Aside type="danger" title="Perhatian">Jika anda sudah menggunakan WSL, anda tidak bisa menggunakan VirtualBox</Aside>
   </TabItem>
 </Tabs>
+
+Penjelasan di atas adalah spesifikasi minimum dan yang direkomendasikan. Tutorial selanjutnya tidak akan menjelaskan bagaimana cara instalasi Alpine atau Ubuntu dari nol, melainkan berfokus pada konfigurasi docker.
+
+Berikut ini sumber lain yang dapat menjadi rujukan dalam instalasi sistem operasi.
+- <a href="https://www.youtube.com/watch?v=LRx8QIzxsUQ" target="_blank" rel="noopener noreferer">How to Install Alpine Linux In VirtualBox</a> - Mental Outlaw
+- <a href="https://www.youtube.com/watch?v=UmXNI9PcxDI" target="_blank" rel="noopener noreferer">Alpine Linux - Simple, Small, and Secure</a> - Titus Tech Talk
+- <a href="https://www.youtube.com/watch?v=9I3jwpPyFMY" target="_blank" rel="noopener noreferer">Cara Install WSL Linux Di PC Windows [Security & Development]</a> - Dea Afrizal
+
+> Mohon untuk melakukan pengecekan supaya spesifikasi mengikuti panduan sebelumnya.

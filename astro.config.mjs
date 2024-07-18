@@ -42,18 +42,8 @@ export default defineConfig({
                       link: "/panduan/baseline/web-admin/prasyarat",
                     },
                     {
-                      label:
-                        "Konfigurasi untuk Alpine Linux tanpa virtualisasi",
-                      link: "/panduan/baseline/web-admin/alpine-linux-native",
-                    },
-                    {
-                      label:
-                        "Konfigurasi untuk Windows Subsystem for Linux (Ubuntu)",
-                      link: "/panduan/baseline/web-admin/wsl",
-                    },
-                    {
-                      label: "Konfigurasi untuk VirtualBox (Alpine Linux)",
-                      link: "/panduan/baseline/web-admin/vbox",
+                      label: "Konfigurasi docker",
+                      link: "/panduan/baseline/web-admin/konfigurasi-docker",
                     },
                   ],
                 },
@@ -66,12 +56,8 @@ export default defineConfig({
                       link: "/panduan/baseline/konektivitas/topologi-alat-praktik",
                     },
                     {
-                      label: "Tunneling ke Klien dengan SSH",
-                      link: "/panduan/baseline/konektivitas/ssh",
-                    },
-                    {
-                      label: "Tunneling ke Klien dengan PuTTY",
-                      link: "/panduan/baseline/konektivitas/putty",
+                      label: "Tunneling ke klien menggunakan SSH/PuTTY",
+                      link: "/panduan/baseline/konektivitas/tunnel",
                     },
                   ],
                 },
