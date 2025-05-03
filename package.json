@@ -1,24 +1,26 @@
 {
-  "name": "web-dokumentasi-sora",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "prebuild": "npx playwright install --with-deps chromium",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.5.8",
-    "@astrojs/starlight": "^0.25.1",
-    "@astrojs/starlight-tailwind": "^2.0.3",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.10.2",
-    "rehype-mermaid": "^2.1.0",
-    "sharp": "^0.32.5",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.2.2"
-  }
+	"name": "web-dokumentasi-sora",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"check": "biome check .",
+		"check:write": "biome check --write .",
+		"check:unsafe": "biome check --write --unsafe .",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/starlight": "^0.34.2",
+		"astro": "^5.6.1",
+		"playwright": "^1.52.0",
+		"remark-mermaidjs": "^7.0.0",
+		"sharp": "^0.32.5"
+	},
+	"packageManager": "pnpm@10.10.0",
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4"
+	}
 }
