@@ -69,7 +69,61 @@ Silahkan merujuk pada beberapa tutorial resmi yang ada.
   </TabItem>
   
   <TabItem label="Ubuntu">
-  WIP
+  > Tutorial ini di sadur dari https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository dengan sedikit modifikasi
+
+  Supaya mempermudah proses instalasi, anda diperlukan untuk masuk sebagai **root** dengan menjalankan perintah ini.
+
+  ```sh
+  sudo su
+  ```
+
+  Update terlebih dahulu menggunakan `apt` supaya mendapatkan informasi terbaru mengenai package yang tersedia.
+
+  ```sh
+  apt update
+  ```
+
+  Install `ca-certificates`, `curl`, dan `git`.
+  ```sh
+  apt-get install ca-certificates curl
+  ```
+
+  Buat direktori keyrings.
+  ```sh
+  install -m 0755 -d /etc/apt/keyrings
+  ```
+
+  Download gpg key docker ke direktori keyrings yang sudah dibuat.
+  ```sh
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  ```
+
+  Ubah izin file `docker.asc` supaya dapat dibaca semua orang.
+  ```sh
+  chmod a+r /etc/apt/keyrings/docker.asc
+  ```
+
+  Tambahkan repositori dan lakukan update kembali.
+  ```sh
+  echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+  apt update
+  ```
+
+  Install docker dan segala ekstensi yang diperlukan.
+  ```sh
+  apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  ```
+  <Aside type="tip">
+    Tutorial selanjutnya akan dijelaskan cara mengubah file konfigurasi menggunakan `vi` atau `nano`. Jika anda tidak terbiasa menggunakan `vi`, anda dapat menggunakan `nano`.
+    
+    ```sh
+    apt update && apt install nano -y
+    ```
+  </Aside>
+
   </TabItem>
 </Tabs>
 

@@ -5,7 +5,7 @@ description: Sebuah perkenalan singkat mengenai aplikasi ini.
 
 ᮞᮧᮛ (Sora) yang berarti suara dalam bahasa sunda adalah sebuah aplikasi yang dapat menyuarakan aspirasi masyarakat untuk memilih kandidat pemimpin yang baru.
 
-Aplikasi ini berbasis Next.js hasil pengembangan progresif karena penggunaan terus-menerus juga umpan balik dari [Majelis Permusyaratan Kelas (MPK)](https://www.instagram.com/mpksman12bekasi) di [SMAN 12 Bekasi](https://www.sman12-bekasi.sch.id/). Oleh karena itu, saat ini sora sudah memasuki versi ke tiga.
+Aplikasi ini berbasis Next.js, merupakan hasil pengembangan progresif karena penggunaan terus-menerus juga umpan balik dari [Majelis Permusyaratan Kelas (MPK)](https://www.instagram.com/mpksman12bekasi) di [SMAN 12 Bekasi](https://www.sman12-bekasi.sch.id/). Oleh karena itu, saat ini sora sudah memasuki versi ke tiga.
 
 ## Motivasi pengembangan proyek ini
 
@@ -98,6 +98,6 @@ allowfullscreen></iframe>
 
 ## Rencana jangka panjang
 
-Software ini diniatkan untuk berkembang lebih jauh dan memiliki banyak varian. Saat ini hanya tersedia untuk versi [baseline](https://github.com/sora-vp/baseline) yang sudah memenuhi kebutuhan untuk level organisasi saja.
+Software ini diniatkan untuk berkembang lebih jauh dan memiliki banyak varian. Saat ini hanya tersedia untuk versi [baseline](https://github.com/sora-vp/baseline) yang sudah memenuhi kebutuhan untuk organisasi tingkat sekolah menengah saja.
 
 Memiliki ide dan ingin berkontribusi? Silahkan buka diskusi di [halaman diskusi](https://github.com/orgs/sora-vp/discussions/new?category=ideas) repositori baseline dan berikan rincian secara padat dan jelas.

@@ -2,14 +2,16 @@ import starlight from "@astrojs/starlight";
 // @ts-check
 import { defineConfig } from "astro/config";
 
-import remarkMermaid from "remark-mermaidjs";
+import rehypeMermaid from "rehype-mermaid";
+
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://sora.rmecha.my.id',
 	markdown: {
-		// Applied to .md and .mdx files
-		remarkPlugins: [remarkMermaid],
-	},
+    	rehypePlugins: [[rehypeMermaid, { strategy: "img-svg" }]],
+  	},
 	integrations: [
 		starlight({
 			title: "Sora Vote Project (ᮞᮧᮛ)",
@@ -23,13 +25,18 @@ export default defineConfig({
 			editLink: {
 				baseUrl: "https://github.com/sora-vp/web-dokumentasi/edit/main/",
 			},
+			customCss: ["./src/styles/global.css"],
 			sidebar: [
 				{
-					label: "Apa itu sora?",
+					label: "Apa itu sora (varian baseline)?",
 					link: "perkenalan",
 				},
 				{
-					label: "Instalasi dan Konfigurasi",
+					label: "Catatan Penggunaan",
+					link: "catatan-penggunaan",
+				},
+				{
+					label: "Konfigurasi dan Penggunaan",
 					items: [
 						{
 							label: "Varian baseline",
@@ -74,20 +81,36 @@ export default defineConfig({
 											link: "/panduan/baseline/sebelum-hari-utama/registrasi-kandidat-partisipan",
 										},
 										{
-											label: "Menyebarkan gambar QR menggunakan qrcode-web",
+											label: "Menyebarkan hak pilih berupa gambar QR menggunakan qrcode-web",
 											link: "/panduan/baseline/sebelum-hari-utama/sebar-qr",
 										},
 									],
 								},
+								{
+									label: "Hari Pemilihan dan Pasca Pemilihan",
+									items: [
+										{
+											label: "Menjalankan Kegiatan Pemilihan pada Hari Utama",
+											link: "/panduan/baseline/hari-utama/pemilihan",
+										},
+										{
+											label: "Mengakhiri Kegiatan Pemilihan",
+											link: "/panduan/baseline/hari-utama/mengakhiri-pemilihan",
+										},
+										{
+											label: "Pelaporan Hasil Perolehan Suara",
+											link: "/panduan/baseline/hari-utama/laporan-perolehan-suara",
+										},
+									],
+								},
 							],
-						},
-						{
-							label: "Reference",
-							autogenerate: { directory: "reference" },
 						},
 					],
 				},
 			],
 		}),
 	],
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });
